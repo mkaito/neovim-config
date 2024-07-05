@@ -13,25 +13,15 @@ return {
   { import = "astrocommunity.colorscheme.nord-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
 
-  -- Fancy
-  { import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
-  {
-    "m4xshen/smartcolumn.nvim",
-    opts = {
-      colorcolumn = 99,
-      disabled_filetypes = { "help" },
-    },
-  },
+  -- Packs
+  { import = "astrocommunity.pack.toml" },
+  { import = "astrocommunity.pack.nix" },
+  { import = "astrocommunity.pack.python-ruff" },
 
   -- Brag
   { import = "astrocommunity.media.presence-nvim" },
   {
     "andweeb/presence.nvim",
-    opts = {
-      -- log_level = "debug",
-    },
+    opts = {},
   },
-
-  -- Distract
-  { import = "astrocommunity.completion.copilot-lua-cmp" },
 }
