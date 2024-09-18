@@ -6,8 +6,6 @@
 return {
   "AstroNvim/astrocommunity",
 
-  { import = "astrocommunity.pack.lua" },
-
   -- Colors
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
   { import = "astrocommunity.colorscheme.nord-nvim" },
@@ -15,7 +13,7 @@ return {
 
   -- Packs
   { import = "astrocommunity.pack.toml" },
-  { import = "astrocommunity.pack.nix" },
+  { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.python-ruff" },
 
   -- Brag
