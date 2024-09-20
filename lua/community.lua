@@ -7,14 +7,15 @@ return {
   "AstroNvim/astrocommunity",
 
   -- Colors
-  { import = "astrocommunity.colorscheme.tokyonight-nvim" },
-  { import = "astrocommunity.colorscheme.nord-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
+  { import = "astrocommunity.colorscheme.nord-nvim" },
+  { import = "astrocommunity.colorscheme.tokyonight-nvim" },
 
   -- Packs
-  { import = "astrocommunity.pack.toml" },
+  { import = "astrocommunity.pack.cs" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.python-ruff" },
+  { import = "astrocommunity.pack.toml" },
 
   -- Brag
   { import = "astrocommunity.media.presence-nvim" },
