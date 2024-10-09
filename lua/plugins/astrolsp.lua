@@ -32,6 +32,7 @@ return {
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         -- "lua_ls",
+        "basedpyright",
       },
       timeout_ms = 1000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -47,6 +48,26 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      csharp_ls = {},
+      ruff = {
+        init_options = {
+          settings = {
+            organizeImports = true,
+          },
+        },
+      },
+      basedpyright = {
+        settings = {
+          basedpyright = {
+            disableOrganizeImports = true,
+          },
+          python = {
+            analysis = {
+              ignore = { "*" },
+            },
+          },
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {
