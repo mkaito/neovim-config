@@ -29,6 +29,7 @@ return {
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
         showtabline = 0,
+        termguicolors = true,
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -82,6 +83,12 @@ return {
         ["<leader>f<space>"] = {
           function() require("telescope.builtin").resume() end,
           desc = "Resume last Telescope search",
+        },
+
+        -- Find usages of symbol under cursor
+        ["gu"] = {
+          function() require("telescope.builtin").lsp_references() end,
+          desc = "Find usages",
         },
       },
       v = {

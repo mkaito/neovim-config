@@ -47,8 +47,6 @@ return {
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
-      -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
-      csharp_ls = {},
       ruff = {
         init_options = {
           settings = {
@@ -59,13 +57,20 @@ return {
       basedpyright = {
         settings = {
           basedpyright = {
-            disableOrganizeImports = true,
-          },
-          python = {
             analysis = {
-              ignore = { "*" },
+              disableOrganizeImports = true,
+              disableTaggedHints = true,
+              typeCheckingMode = "basic",
+              diagnosticMode = "openFilesOnly",
+              diagnosticSeverityOverrides = {
+                -- Disable diagnostics that are handled by ruff
+                reportUnusedImport = false,
+                reportUndefinedVariable = false,
+                reportUnusedVariable = false,
+              },
             },
           },
+          python = {},
         },
       },
     },

@@ -52,12 +52,6 @@ return {
   },
 
   {
-    "tpope/vim-fugitive",
-    cmd = "Git",
-    version = "*",
-  },
-
-  {
     "mihyaeru21/nvim-lspconfig-bundler",
     dependencies = { "neovim/nvim-lspconfig" },
   },
@@ -66,13 +60,24 @@ return {
     "mfussenegger/nvim-dap",
     dependencies = {
       "suketa/nvim-dap-ruby",
-      name = "dap-ruby",
-      opts = {},
-      -- config = function() require("dap-ruby").setup() end,
+      "mfussenegger/nvim-dap-python",
     },
+    config = function()
+      require("dap-ruby").setup()
+      require("dap-python").setup()
+
+      require("dap.ext.vscode").load_launchjs(nil, {
+        ruby = { "ruby" },
+        python = { "python", "python3", "py" },
+      })
+    end,
   },
 
   {
-    "tpope/vim-rails",
+    "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
+    },
+    build = ":TSUpdate",
   },
 }
