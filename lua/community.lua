@@ -17,6 +17,7 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.nix" },
+  { import = "astrocommunity.pack.proto" },
   { import = "astrocommunity.pack.python-ruff" },
   { import = "astrocommunity.pack.ruby" },
   { import = "astrocommunity.pack.rust" },
