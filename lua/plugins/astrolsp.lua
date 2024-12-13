@@ -67,6 +67,7 @@ return {
                 reportUnusedImport = false,
                 reportUndefinedVariable = false,
                 reportUnusedVariable = false,
+                reportUnusedParameter = false,
               },
             },
           },
