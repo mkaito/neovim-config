@@ -44,25 +44,9 @@ return {
       n = {
         -- second key is the lefthand side of the map
 
-        -- navigate buffer tabs with `H` and `L`
-        -- L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        -- H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
-
-        -- mappings seen under group name "Buffer"
-        -- ["<Leader>bD"] = {
-        --   function()
-        --     require("astroui.status.heirline").buffer_picker(
-        --       function(bufnr) require("astrocore.buffer").close(bufnr) end
-        --     )
-        --   end,
-        --   desc = "Pick to close",
-        -- },
-
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         ["<Leader>b"] = { desc = "Buffers" },
-        -- quick save
-        -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
 
         -- second key is the lefthand side of the map
         [";"] = { ":", desc = "Command mode" },
@@ -70,13 +54,25 @@ return {
         -- tables with the `name` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-        ["<leader><leader>"] = { "<cmd>Telescope buffers<cr>", desc = "Buffer list" },
+        ["<leader><leader>"] = {
+          function() require("telescope.builtin").buffers { sort_mru = true } end,
+          desc = "Buffer list",
+        },
+        ["<leader>fb"] = {
+          function() require("telescope.builtin").buffers { sort_mru = true } end,
+          desc = "Buffer list",
+        },
         ["<leader><TAB>"] = { "<cmd>b #<cr>", desc = "Edit alternate file" },
 
         -- The default binding hides hidden files, but I want to see them
         ["<leader>ff"] = {
           function() require("telescope.builtin").find_files { hidden = true } end,
           desc = "Find files",
+        },
+        -- TODO: Filter by project?
+        ["<Leader>fO"] = {
+          function() require("telescope.builtin").oldfiles { only_cwd = true } end,
+          desc = "Find history",
         },
 
         -- Resume last Telescope session
