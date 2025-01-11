@@ -19,7 +19,6 @@ return {
   { import = "astrocommunity.pack.nix" },
   { import = "astrocommunity.pack.proto" },
   { import = "astrocommunity.pack.python-ruff" },
-  { import = "astrocommunity.pack.ruby" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.typescript" },
@@ -27,11 +26,10 @@ return {
 
   -- Formating
   { import = "astrocommunity.editing-support.conform-nvim" },
-
-  -- Brag
-  { import = "astrocommunity.media.presence-nvim" },
-  {
-    "andweeb/presence.nvim",
-    opts = {},
-  },
+  -- {
+  --   "stevearc/conform.nvim",
+  --   opts = {
+  --     log_level = vim.log.levels.DEBUG,
+  --   },
+  -- },
 }
