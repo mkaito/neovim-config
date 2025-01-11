@@ -6,18 +6,18 @@ return {
   "gpanders/editorconfig.nvim",
 
   {
-    "mkaito/barbecue.nvim",
-    name = "barbecue",
-    -- https://github.com/utilyre/barbecue.nvim/pull/93
-    -- version = "*",
-    branch = "mkaito/fix-default-icon",
-    event = "VeryLazy",
+    "Bekaboo/dropbar.nvim",
+    -- optional, but required for fuzzy finder support
     dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
     },
-    -- I don't know why this is necessary, but apparently it is.
-    opts = {},
+    config = function()
+      local dropbar_api = require "dropbar.api"
+      vim.keymap.set("n", "<Leader>;", dropbar_api.pick, { desc = "Pick symbols in winbar" })
+      vim.keymap.set("n", "[;", dropbar_api.goto_context_start, { desc = "Go to start of current context" })
+      vim.keymap.set("n", "];", dropbar_api.select_next_context, { desc = "Select next context" })
+    end,
   },
 
   {
@@ -65,11 +65,6 @@ return {
     config = function()
       require("dap-ruby").setup()
       require("dap-python").setup()
-
-      require("dap.ext.vscode").load_launchjs(nil, {
-        ruby = { "ruby" },
-        python = { "python", "python3", "py" },
-      })
     end,
   },
 
@@ -79,5 +74,17 @@ return {
       { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
     },
     build = ":TSUpdate",
+  },
+  {
+    "RRethy/nvim-treesitter-endwise",
+    main = "nvim-treesitter.configs",
+    opts = {
+      endwise = { enable = true },
+    },
+  },
+
+  {
+    "tpope/vim-endwise",
+    event = "InsertEnter",
   },
 }
