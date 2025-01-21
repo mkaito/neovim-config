@@ -30,6 +30,9 @@ return {
         wrap = false, -- sets vim.opt.wrap
         showtabline = 0,
         termguicolors = true,
+        -- Use ripgrep for :grep
+        grepprg = "rg --vimgrep",
+        grepformat = "%f:%l:%c:%m",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
