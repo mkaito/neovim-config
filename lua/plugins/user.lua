@@ -70,10 +70,14 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    main = "nvim-treesitter.configs",
     dependencies = {
       { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
     },
     build = ":TSUpdate",
+    opts = {
+      indent = { enable = false },
+    },
   },
   {
     "RRethy/nvim-treesitter-endwise",
