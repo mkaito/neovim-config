@@ -13,6 +13,7 @@ return {
 
   -- Packs
   { import = "astrocommunity.pack.cs" },
+  { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.markdown" },
@@ -23,6 +24,7 @@ return {
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.yaml" },
+  { import = "astrocommunity.pack.zig" },
 
   -- Formating
   { import = "astrocommunity.editing-support.conform-nvim" },
