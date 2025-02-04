@@ -28,4 +28,13 @@ require("lazy").setup({
       },
     },
   },
+  git = {
+    timeout = 120,
+    throttle = {
+      enabled = false,
+      rate = 2,
+      duration = 5000,
+    },
+  },
+  cooldown = 79200000,
 } --[[@as LazyConfig]])

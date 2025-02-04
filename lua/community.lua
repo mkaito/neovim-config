@@ -13,6 +13,7 @@ return {
 
   -- Packs
   { import = "astrocommunity.pack.cs" },
+  { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.lua" },
