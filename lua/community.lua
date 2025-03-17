@@ -14,6 +14,7 @@ return {
   -- Packs
   { import = "astrocommunity.pack.cs" },
   { import = "astrocommunity.pack.docker" },
+  { import = "astrocommunity.pack.full-dadbod" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.lua" },
@@ -22,6 +23,7 @@ return {
   { import = "astrocommunity.pack.proto" },
   { import = "astrocommunity.pack.python-ruff" },
   { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.pack.terraform" },
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.yaml" },
