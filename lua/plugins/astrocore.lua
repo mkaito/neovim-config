@@ -33,6 +33,9 @@ return {
         -- Use ripgrep for :grep
         grepprg = "rg --vimgrep",
         grepformat = "%f:%l:%c:%m",
+
+        -- Remember more old files
+        shada = "!,'5000,<50,s10,h",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
