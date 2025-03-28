@@ -15,6 +15,7 @@ return {
     config.sources = {
       -- Add some
       b.formatting.alejandra,
+      b.formatting.prettierd,
     }
     return config -- return final config table
   end,
