@@ -75,9 +75,11 @@ return {
       { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
     },
     build = ":TSUpdate",
-    opts = {
-      indent = { enable = false },
-    },
+    -- Disable TS Indent globally
+    -- TODO: Per-filetype? Ideally, only disable for Ruby
+    -- opts = {
+    --   indent = { enable = false },
+    -- },
   },
   {
     "RRethy/nvim-treesitter-endwise",
