@@ -5,6 +5,22 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
+
+  -- Colors
+  { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+
+  -- Packs
+  { import = "astrocommunity.pack.cs" },
+  { import = "astrocommunity.pack.docker" },
+  { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.lua" },
-  -- import/override with your plugins folder
+  { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.pack.proto" },
+  { import = "astrocommunity.pack.python-ruff" },
+  { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.pack.terraform" },
+  { import = "astrocommunity.pack.toml" },
+  { import = "astrocommunity.pack.typescript" },
+  { import = "astrocommunity.pack.yaml" },
+  { import = "astrocommunity.pack.zig" },
 }
