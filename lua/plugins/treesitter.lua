@@ -8,7 +8,6 @@ return {
       "lua",
       "vim",
       "ruby",
-      "python",
     },
   },
 }

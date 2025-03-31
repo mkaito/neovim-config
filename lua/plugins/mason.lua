@@ -10,7 +10,7 @@ return {
       -- Make sure to use the names found in `:Mason`
       ensure_installed = {
         "lua-language-server",
-        "bashls",
+        "bash-language-server",
         "stylua",
         "tree-sitter-cli",
         "actionlint",
