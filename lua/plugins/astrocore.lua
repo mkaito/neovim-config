@@ -1,5 +1,7 @@
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
+-- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
+--       as this provides autocomplete and documentation while editing
 
 ---@type LazySpec
 return {
@@ -8,10 +10,10 @@ return {
   opts = {
     -- Configure core features of AstroNvim
     features = {
-      large_buf = { size = 1024 * 500, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
+      large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
-      diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
+      diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic settings on startup
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
     },
@@ -20,13 +22,26 @@ return {
       virtual_text = true,
       underline = true,
     },
+    -- passed to `vim.filetype.add`
+    filetypes = {
+      -- see `:h vim.filetype.add` for usage
+      extension = {
+        foo = "fooscript",
+      },
+      filename = {
+        [".foorc"] = "fooscript",
+      },
+      pattern = {
+        [".*/etc/foo/.*"] = "fooscript",
+      },
+    },
     -- vim options can be configured here
     options = {
       opt = { -- vim.opt.<key>
         relativenumber = true, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
-        signcolumn = "auto", -- sets vim.opt.signcolumn to auto
+        signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
         showtabline = 0,
         termguicolors = true,
@@ -50,55 +65,28 @@ return {
       n = {
         -- second key is the lefthand side of the map
 
+        -- navigate buffer tabs
+        ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+        ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+
+        -- mappings seen under group name "Buffer"
+        ["<Leader>bd"] = {
+          function()
+            require("astroui.status.heirline").buffer_picker(
+              function(bufnr) require("astrocore.buffer").close(bufnr) end
+            )
+          end,
+          desc = "Close buffer from tabline",
+        },
+
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
-        ["<Leader>b"] = { desc = "Buffers" },
+        -- ["<Leader>b"] = { desc = "Buffers" },
 
         -- second key is the lefthand side of the map
         [";"] = { ":", desc = "Command mode" },
-
-        -- tables with the `name` key will be registered with which-key if it's installed
-        -- this is useful for naming menus
-        ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-        ["<leader><leader>"] = {
-          function() require("telescope.builtin").buffers { sort_mru = true } end,
-          desc = "Buffer list",
-        },
-        ["<leader>fb"] = {
-          function() require("telescope.builtin").buffers { sort_mru = true } end,
-          desc = "Buffer list",
-        },
-        ["<leader><TAB>"] = { "<cmd>b #<cr>", desc = "Edit alternate file" },
-
-        -- The default binding hides hidden files, but I want to see them
-        ["<leader>ff"] = {
-          function() require("telescope.builtin").find_files { hidden = true } end,
-          desc = "Find files",
-        },
-        -- TODO: Filter by project?
-        ["<Leader>fO"] = {
-          function() require("telescope.builtin").oldfiles { only_cwd = true } end,
-          desc = "Find history",
-        },
-
-        -- Resume last Telescope session
-        ["<leader>f<space>"] = {
-          function() require("telescope.builtin").resume() end,
-          desc = "Resume last Telescope search",
-        },
-
-        -- Find usages of symbol under cursor
-        ["gu"] = {
-          function() require("telescope.builtin").lsp_references() end,
-          desc = "Find usages",
-        },
-      },
-      v = {
-        [";"] = { ":", desc = "Command mode" },
-      },
-      t = {
         -- setting a mapping to false will disable it
-        -- ["<esc>"] = false,
+        -- ["<C-S>"] = false,
       },
     },
   },
