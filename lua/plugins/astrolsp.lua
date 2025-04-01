@@ -28,7 +28,8 @@ return {
       },
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
-        -- "lua_ls",
+        "lua_ls", -- Use Stylua
+        "basedpyright", -- Use ruff
       },
       timeout_ms = 1000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -37,12 +38,44 @@ return {
     },
     -- enable servers that you already have installed without mason
     servers = {
-      -- "pyright"
+      "ruby_lsp",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
-      -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      ruff = {
+        init_options = {
+          settings = {
+            organizeImports = true,
+          },
+        },
+      },
+      basedpyright = {
+        settings = {
+          basedpyright = {
+            analysis = {
+              disableOrganizeImports = true,
+              disableTaggedHints = true,
+              typeCheckingMode = "basic",
+              diagnosticMode = "openFilesOnly",
+              diagnosticSeverityOverrides = {
+                -- Disable diagnostics that are handled by ruff
+                reportUnusedImport = false,
+                reportUndefinedVariable = false,
+                reportUnusedVariable = false,
+                reportUnusedParameter = false,
+              },
+            },
+          },
+          python = {},
+        },
+      },
+      ruby_lsp = {
+        init_options = {
+          formatter = "standard",
+          linters = { "standard" },
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {
@@ -52,6 +85,10 @@ return {
       -- the key is the server that is being setup with `lspconfig`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
+      tflint = function(_, opts)
+        local util = require "lspconfig.util"
+        opts.root_dir = util.root_pattern(".terraform.lock.hcl", ".tflint.hcl", ".git")
+      end,
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
