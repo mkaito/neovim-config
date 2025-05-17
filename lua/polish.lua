@@ -5,3 +5,8 @@
 
 -- Prepend mise shims to PATH
 vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
+
+-- Hyprlang filetype
+vim.filetype.add {
+  pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+}

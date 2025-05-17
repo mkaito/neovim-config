@@ -8,6 +8,8 @@ return {
       "lua",
       "vim",
       "ruby",
+      "yaml",
+      "hyprlang",
     },
   },
 }
