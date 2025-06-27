@@ -72,16 +72,4 @@ return {
       )
     end,
   },
-  {
-    "neovim/nvim-lspconfig",
-    version = "*",
-  },
-  {
-    "mason-org/mason.nvim",
-    version = "*",
-  },
-  {
-    "mason-org/mason-lspconfig.nvim",
-    version = "*",
-  },
 }
