@@ -19,6 +19,7 @@ return {
   { import = "astrocommunity.pack.python-ruff" },
   { import = "astrocommunity.pack.rust" },
   -- { import = "astrocommunity.pack.ruby" }, # You REALLY want to install your Ruby tools using Bundler
+  { import = "astrocommunity.pack.full-dadbod" },
   { import = "astrocommunity.pack.terraform" },
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.typescript" },
