@@ -19,6 +19,7 @@ return {
       -- null_ls.builtins.formatting.stylua,
       -- null_ls.builtins.formatting.prettier,
       b.formatting.prettierd,
+      b.diagnostics.mypy,
     })
   end,
 }

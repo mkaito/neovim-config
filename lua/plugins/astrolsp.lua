@@ -53,17 +53,17 @@ return {
       basedpyright = {
         settings = {
           basedpyright = {
+            disableOrganizeImports = true,
+            disableTaggedHints = true,
             analysis = {
-              disableOrganizeImports = true,
-              disableTaggedHints = true,
-              typeCheckingMode = "basic",
-              diagnosticMode = "openFilesOnly",
+              typeCheckingMode = "off",
               diagnosticSeverityOverrides = {
-                -- Disable diagnostics that are handled by ruff
                 reportUnusedImport = false,
                 reportUndefinedVariable = false,
                 reportUnusedVariable = false,
                 reportUnusedParameter = false,
+                reportUnknownVariableType = false,
+                reportUnnecessaryTypeIgnoreComment = false,
               },
             },
           },
