@@ -37,6 +37,20 @@ return {
           }, "\n"),
         },
       },
+      picker = {
+        win = {
+          input = {
+            keys = {
+              ["<C-d>"] = { "bufdelete", mode = { "n", "i" } },
+            },
+          },
+          list = {
+            keys = {
+              ["<C-d>"] = "bufdelete",
+            },
+          },
+        },
+      },
     },
   },
 
@@ -70,6 +84,17 @@ return {
         -- disable for .vim files, but it work for another filetypes
         Rule("a", "a", "-vim")
       )
+    end,
+  },
+  {
+    "kylechui/nvim-surround",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup {
+        keymaps = {
+          visual = "s",
+        },
+      }
     end,
   },
 }
