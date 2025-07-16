@@ -57,6 +57,7 @@ return {
             disableTaggedHints = true,
             analysis = {
               typeCheckingMode = "off",
+              diagnosticMode = "workspace",
               diagnosticSeverityOverrides = {
                 reportUnusedImport = false,
                 reportUndefinedVariable = false,
@@ -67,7 +68,6 @@ return {
               },
             },
           },
-          python = {},
         },
       },
       ruby_lsp = {
