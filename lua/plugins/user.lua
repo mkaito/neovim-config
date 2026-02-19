@@ -5,6 +5,24 @@
 ---@type LazySpec
 return {
 
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      opts.textobjects = opts.textobjects or {}
+      local select = opts.textobjects.select or {}
+      select.enable = true
+      select.lookahead = true
+      select.include_surrounding_whitespace = false
+      select.keymaps = vim.tbl_extend("force", select.keymaps or {}, {
+        -- new textobject: kwarg value only / whole kwarg
+        ["ik"] = "@kwarg.value",
+        ["ak"] = "@kwarg.outer",
+      })
+      opts.textobjects.select = select
+    end,
+    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+  },
+
   -- == Examples of Adding Plugins ==
 
   "andweeb/presence.nvim",
