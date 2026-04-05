@@ -1,3 +1,7 @@
+# DEPRECATED
+
+Moved to [dotfiles](https://github.com/mkaito/dotfiles/tree/master/home/dot_config/nvim)
+
 # Neovim configuration
 
 This configuration uses [AstroNvim v4](https://astronvim.com/).
